@@ -1,0 +1,2 @@
+class ODLError(ValueError):
+    pass

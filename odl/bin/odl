@@ -1,0 +1,47 @@
+#!/usr/bin/env python
+import argparse
+
+from odl import prepare, pipeline
+
+
+def _to_mapping(m):
+    parts = m.split(':')
+    if len(parts) != 2:
+        raise ValueError("Invalid Mapping {}".format(m))
+
+    return (parts[0], parts[1])
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument(
+        "job", help="[prepare|run] what job are we going to run.")
+
+    parser.add_argument(
+        "input_path", help="The path of the input file to run the job on.")
+
+    parser.add_argument("output_path", help="The path of the output location.")
+
+    parser.add_argument(
+        '-m',
+        '--mappings',
+        action='append',
+        help='Used for mapping filed names in the prepare job to oDL inputs.',
+        required=False)
+
+    parser.add_argument(
+        '-s', '--salt', help='Salt for ip encoding', required=False)
+
+    args = parser.parse_args()
+
+    input_path = args.input_path
+    output_path = args.output_path
+
+    assert args.job in ['prepare', 'run']
+
+    mappings = dict(map(_to_mapping, args.mappings))
+
+    if args.job == 'prepare':
+        prepare.write(
+            input_path, output_path, mappings=mappings, salt=args.salt)
