@@ -14,6 +14,7 @@ oDL is in the comment phase of development. For now you'll need to clone from so
 $ git clone git@github.com:open-downloads/odl.git && cd odl
 $ virtualenv .
 $ source bin/activate
+$ python setup.py install
 $ ipython
 
 > from odl import prepare, pipeline
@@ -175,7 +176,7 @@ The `odl` package uses Apache Beam under the hood to work on logfiles at any sca
 
 If you would like to run this through Google Cloud DataFlow on a large scale dataset, you would use the following:
 
-*Note: This costs money, since it's using Google Cloud Platform.*
+_Note: This costs money, since it's using Google Cloud Platform._
 
 ```
 > pipeline.run('gs://events-bucket-name/events*',  
