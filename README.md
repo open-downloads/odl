@@ -52,7 +52,7 @@ That's it. It's intentionally simple to reduce confusion for all involved.
 
 Podcasts get many downloads from bots, servers, and things that just aren't human. We need to avoid counting these, but if everyone maintains their own blacklist, they can't count the same way.
 
-oDL uses common, publicly available blacklists for User Agent and IP Address:
+oDL uses common, publicly available lists to decide which User Agents and IP Addresses should be blacklisted:
 
 - OPAWG's Podcast User Agent list: https://github.com/opawg/user-agents
 - ipcat's datacenter IP list: https://github.com/client9/ipcat/blob/master/datacenters.csv
@@ -108,6 +108,8 @@ A spec isn't much without code to run it all. oDl ships with a full implementati
 ### Prepare
 
 The first step in running oDL is to prepare the data for the download counting job. oDL uses the following avro schema for raw events:
+
+_Note: timestamps should be strings in RFC 3339 format_
 
 ```
 [{
