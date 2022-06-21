@@ -1,5 +1,5 @@
 apache-beam[gcp]==2.10.0
-numpy==1.14.5
+numpy==1.22.0
 ipaddress
 arrow
 udatetime

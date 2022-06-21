@@ -17,6 +17,6 @@ setuptools.setup(
     ]},
     include_package_data=True,
     install_requires=[
-        'apache-beam[gcp]==2.10.0', 'numpy==1.14.5', 'ipaddress', 'arrow',
+        'apache-beam[gcp]==2.10.0', 'numpy==1.22.0', 'ipaddress', 'arrow',
         'udatetime', 'pytricia==1.0.0', 'fastavro==0.21.24'
     ])
